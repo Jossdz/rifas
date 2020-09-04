@@ -10,13 +10,21 @@ const raffleSchema = new Schema(
       type: Number,
       default: 10
     },
+    totalTickets: {
+      type: Number,
+      default: 10
+    },
     ticketPrice: Number,
     soldTickets: [
       {
         type: Schema.Types.ObjectId,
         ref: "Ticket"
       }
-    ]
+    ],
+    finished: {
+      type: Boolean,
+      default: false
+    }
   },
   { timestamps: true }
 )

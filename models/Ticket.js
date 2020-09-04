@@ -9,6 +9,10 @@ const ticketSchema = new Schema(
     raffle: {
       type: Schema.Types.ObjectId,
       ref: "Raffle"
+    },
+    winner: {
+      type: Boolean,
+      default: false
     }
   },
   { timestamps: true }

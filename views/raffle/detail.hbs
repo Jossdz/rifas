@@ -9,7 +9,24 @@
     <b>Donated By: {{product.donatedBy.username}}</b>
     <br>
     <br>
-    <p> Available Tickets: {{availableTickets}} <i class="fas fa-ticket-alt"></i></p>
+    <p> Available Tickets: {{availableTickets}} <i class="fas fa-ticket-alt"></i> - Price: ${{ticketPrice}}.00</p>
+    {{#if user}}
+    {{#if available}}
+    <form method="POST" action="/bought-ticket/{{_id}}">
+      <script src="https://www.mercadopago.com.mx/integrations/v1/web-payment-checkout.js"
+        data-preference-id='{{preferenceId}}'>
+        </script>
+    </form>
+    {{/if}}
+    {{else}}
+    <a href="/auth/login">login for buy</a>
+    {{/if}}
   </div>
-  {{!-- TODO: Agregar el pago aca --}}
+
 </div>
+
+<script>
+  const $mpbutton = document.querySelector('.mercadopago-button')
+  $mpbutton.classList.add('btn', 'btn-block', 'btn-success')
+  $mpbutton.classList.remove('mercadopago-button')
+</script>

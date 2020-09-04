@@ -12,11 +12,16 @@ const {
 const {
   generateRaffle,
   getAllRaffles,
-  raffleDetail
+  raffleDetail,
+  boughtTicket
 } = require("../controllers/raffle")
 
 /* GET home page */
 router.get("/", catchErrors(getAllRaffles))
+router.get("/profile", (req, res) => {
+  console.log(req.user.tickets[0].raffle)
+  res.render("profile", req.user)
+})
 
 //=========PRODUCTS============
 router.get(
@@ -44,5 +49,6 @@ router.post(
   catchErrors(generateRaffle)
 )
 router.get("/raffle/:raffleId", raffleDetail)
+router.post("/bought-ticket/:raffleId", boughtTicket)
 
 module.exports = router

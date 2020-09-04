@@ -1,0 +1,15 @@
+<h1>
+  End Raffles
+</h1>
+
+<hr>
+
+{{#each raffles}}
+<div class="card">
+  <div class="card-body">
+    <h5 class="card-title">{{product.name}}</h5>
+    <a href="/raffle/end/{{_id}}" class="btn btn-danger btn-block">End</a>
+  </div>
+</div>
+
+{{/each}}

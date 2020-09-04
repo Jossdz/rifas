@@ -13,7 +13,9 @@ const {
   generateRaffle,
   getAllRaffles,
   raffleDetail,
-  boughtTicket
+  boughtTicket,
+  endRaffles,
+  setRaffleWinner
 } = require("../controllers/raffle")
 
 /* GET home page */
@@ -50,5 +52,7 @@ router.post(
 )
 router.get("/raffle/:raffleId", raffleDetail)
 router.post("/bought-ticket/:raffleId", boughtTicket)
+router.get("/raffles/end", endRaffles)
+router.get("/raffle/end/:raffleId", setRaffleWinner)
 
 module.exports = router

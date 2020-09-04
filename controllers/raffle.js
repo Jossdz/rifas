@@ -77,3 +77,27 @@ exports.boughtTicket = async (req, res) => {
   await User.findByIdAndUpdate(req.user.id, { $push: { tickets: ticket._id } })
   res.redirect("/profile")
 }
+
+exports.endRaffles = async (req, res) => {
+  const raffles = await Raffle.find({
+    availableTickets: 0,
+    finished: false
+  }).populate("product")
+  res.render("raffle/end", { raffles })
+}
+
+exports.setRaffleWinner = async (req, res) => {
+  const { raffleId } = req.params
+  const raffle = await Raffle.findById(raffleId).populate("soldTickets")
+  // 1. obtener a un ganador aleatorio de los soldTickets de la rifa
+  const winnerId = Math.floor(Math.random() * raffle.soldTickets.length)
+  const ticketWinner = raffle.soldTickets[winnerId]
+  console.log("winner:", ticketWinner)
+  // 2. cambiar la propiedad winner del ticket seleccionado de forma aleatoria por true
+  await Ticket.findByIdAndUpdate(ticketWinner, { winner: true })
+  // 3. Enviar el roadster que diego prometio al ganador.
+  // 4. cambiar la propiedad finished de la rifa por true
+  await Raffle.findByIdAndUpdate(raffleId, { finished: true })
+  // 5. redirigir a la misma vista de end raffles
+  res.redirect("/raffles/end")
+}

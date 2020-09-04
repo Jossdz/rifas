@@ -40,13 +40,21 @@ router.post("/signup", uploader.single("photo"), (req, res, next) => {
 
     const salt = bcrypt.genSaltSync(bcryptSalt)
     const hashPass = bcrypt.hashSync(password, salt)
-
-    const newUser = new User({
-      username,
-      password: hashPass,
-      photo: req.file.path || null,
-      role
-    })
+    let newUser
+    if (req.file) {
+      newUser = new User({
+        username,
+        password: hashPass,
+        photo: req.file.path || null,
+        role
+      })
+    } else {
+      newUser = new User({
+        username,
+        password: hashPass,
+        role
+      })
+    }
 
     newUser
       .save()

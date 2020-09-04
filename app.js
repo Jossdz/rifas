@@ -12,6 +12,7 @@ const path = require("path")
 const session = require("express-session")
 const MongoStore = require("connect-mongo")(session)
 const flash = require("connect-flash")
+const { setLocals } = require("./middlewares")
 
 mongoose
   .connect("mongodb://localhost/rifas", { useNewUrlParser: true })
@@ -74,14 +75,7 @@ app.use(
 )
 app.use(flash())
 require("./passport")(app)
-app.use((req, res, next) => {
-  if (req.user) {
-    app.locals.user = req.user
-  } else {
-    app.locals.user = null
-  }
-  next()
-})
+app.use(setLocals(app))
 
 const index = require("./routes/index")
 app.use("/", index)

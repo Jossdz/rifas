@@ -26,8 +26,7 @@ router.get("/signup", (req, res, next) => {
 })
 
 router.post("/signup", uploader.single("photo"), (req, res, next) => {
-  const username = req.body.username
-  const password = req.body.password
+  const { username, password, role } = req.body
   if (username === "" || password === "") {
     res.render("auth/signup", { message: "Indicate username and password" })
     return
@@ -45,7 +44,8 @@ router.post("/signup", uploader.single("photo"), (req, res, next) => {
     const newUser = new User({
       username,
       password: hashPass,
-      photo: req.file.path
+      photo: req.file.path,
+      role
     })
 
     newUser

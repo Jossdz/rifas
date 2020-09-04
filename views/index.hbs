@@ -1,2 +1,20 @@
-<h1>{{title}}</h1>
-<p>Welcome to {{title}}</p>
+<h1>Raffles</h1>
+<hr>
+<div class="row">
+  {{#each raffles}}
+  <div class="col-xs-12 col-md-6 col-lg-4">
+    <div class="card">
+      <img src="{{product.image}}" class="card-img-top" alt="{{product.name}}">
+      <div class="card-body">
+        <h5 class="card-title">{{product.name}}</h5>
+        <p class="card-text">{{product.description}}</p>
+        <small><i class="fas fa-ticket-alt text-primary"></i> Available tickets: {{availableTickets}} -
+          ${{ticketPrice}}.00</small>
+        <br>
+        <br>
+        <a href="/raffle/{{_id}}" class="btn btn-primary btn-block">Go details</a>
+      </div>
+    </div>
+  </div>
+  {{/each}}
+</div>

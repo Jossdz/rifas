@@ -13,7 +13,7 @@
 </head>
 
 <body>
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <a class="navbar-brand" href="/">Rifas</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
       aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
@@ -28,6 +28,12 @@
       </div>
     </div>
     <span class="navbar-text" style="display: flex; align-items: center">
+      {{#if company}}
+      <a class="nav-link" href="/products/donate">Donate</a>
+      {{/if}}
+      {{#if admin}}
+      <a class="nav-link" href="/products/validate">Validate products</a>
+      {{/if}}
       {{#if user}}
       <a class="nav-link" href="/profile"><img src={{user.photo}}
           style="width: 30px; height: 30px; border-radius: 50%" /> profile</a>
@@ -36,8 +42,10 @@
     </span>
   </nav>
 
-  {{{body}}}
-
+  <div class="container">
+    <br>
+    {{{body}}}
+  </div>
   <script src="/javascripts/script.js"></script>
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
     integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"

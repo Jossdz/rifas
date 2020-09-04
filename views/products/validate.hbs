@@ -1,0 +1,49 @@
+<h1>Validate products</h1>
+<hr>
+<div class="row">
+  {{#each products}}
+  <div class="col-sm-12">
+    <div class="card mb-3">
+      <div class="row no-gutters">
+        <div class="col-md-4">
+          <img src="{{image}}" class="card-img" alt="{{name}}"
+            style="height: 100%;object-fit: cover; max-height: 303px">
+        </div>
+        <div class="col-md-8">
+          <div class="card-body">
+            <h5 class="card-title">{{name}}</h5>
+            <p class="card-text">{{description}}</p>
+            <p class="card-text"><small class="text-muted">Donated By: {{donatedBy.username}}</small></p>
+            <form action="/raffle/new/{{_id}}" method="post">
+              <div class="row">
+                <div class="col-sm-6">
+                  <div class="form-group">
+                    <label for="exampleInputEmail1">Tickets</label>
+                    <input type="number" class="form-control" name="ticketQuantity">
+                    <small id="emailHelp" class="form-text text-muted">Set the tickets quantity.</small>
+                  </div>
+                </div>
+                <div class="col-sm-6">
+                  <div class="form-group">
+                    <label for="exampleInputEmail1">Price</label>
+                    <input type="number" class="form-control" name="price" placeholder="$0.00">
+                    <small id="emailHelp" class="form-text text-muted">Set the tickets price.</small>
+                  </div>
+                </div>
+                <div class="col-sm-4">
+                  <a href="/products/delete/{{_id}}">
+                    <button class="btn btn-large btn-block btn-outline-danger">Delete</button>
+                  </a>
+                </div>
+                <div class="col-sm-8">
+                  <button type="submit" class="btn btn-large btn-block btn-primary">Create</button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  {{/each}}
+</div>

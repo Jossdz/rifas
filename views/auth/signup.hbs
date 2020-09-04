@@ -1,28 +1,40 @@
-<h2>Signup</h2>
+<div class="row">
+  <div class="col-sm-8 offset-sm-2">
+    <h2>Signup</h2>
 
-<form action="/auth/signup" method="POST" id="form-container" enctype="multipart/form-data">
-  <label for="username">Username</label>
-  <input id="username" type="text" name="username" placeholder="JonSnow">
+    <form action="/auth/signup" method="POST" id="form-container" enctype="multipart/form-data">
+      <label for="username">Username</label>
+      <input id="username" type="text" name="username" placeholder="JonSnow">
 
-  <br><br>
-  <label for="photo">photo</label>
-  <input id="photo" type="file" name="photo">
+      <br><br>
+      <label for="photo">photo</label>
+      <input id="photo" type="file" name="photo">
 
-  <br><br>
+      <br><br>
 
-  <label for="password">Password</label>
-  <input id="password" type="password" name="password" placeholder="Your password">
-  <br>
-  {{#if message }}
-  <div class="error-message">{{ message }}</div>
-  {{/if}}
+      <label for="password">Password</label>
+      <input id="password" type="password" name="password" placeholder="Your password">
+      <br><br>
+      <select class="custom-select" name='role'>
+        <option selected>User type:</option>
+        <option value="NONP">non profit</option>
+        <option value="COMPANY">company</option>
+        <option value="USER">buyer</option>
+      </select>
 
-  <br><br>
+      <br>
+      {{#if message }}
+      <div class="error-message">{{ message }}</div>
+      {{/if}}
 
-  <button>Create account</button>
+      <br><br>
 
-  <p class="account-message">
-    Do you already have an account?
-    <a href="/auth/login">Login</a>
-  </p>
-</form>
+      <button>Create account</button>
+
+      <p class="account-message">
+        Do you already have an account?
+        <a href="/auth/login">Login</a>
+      </p>
+    </form>
+  </div>
+</div>

@@ -21,6 +21,17 @@
     {{else}}
     <a href="/auth/login">login for buy</a>
     {{/if}}
+    {{#each soldTickets}}
+    {{#if winner}}
+    <center>
+      <h2 class="text-success"><i class="fas fa-award"></i></h2>
+      <h3 class="text-success">Winner: {{owner.username}}</h3>
+    </center>
+    {{/if}}
+    {{/each}}
+    {{#if finished}}
+    <h2 class="text-danger">This raffle has ended</h2>
+    {{/if}}
   </div>
 
 </div>

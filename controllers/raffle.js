@@ -28,11 +28,19 @@ exports.getAllRaffles = async (req, res) => {
 
 exports.raffleDetail = async (req, res) => {
   const raffle = await Raffle.findById(req.params.raffleId)
+    .populate("soldTickets")
     .populate("product")
     .populate({
       path: "product",
       populate: {
         path: "donatedBy",
+        model: "User"
+      }
+    })
+    .populate({
+      path: "soldTickets",
+      populate: {
+        path: "owner",
         model: "User"
       }
     })

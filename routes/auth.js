@@ -44,7 +44,7 @@ router.post("/signup", uploader.single("photo"), (req, res, next) => {
     const newUser = new User({
       username,
       password: hashPass,
-      photo: req.file.path,
+      photo: req.file.path || null,
       role
     })
 

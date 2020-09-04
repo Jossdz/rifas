@@ -15,7 +15,7 @@ const flash = require("connect-flash")
 const { setLocals } = require("./middlewares")
 
 mongoose
-  .connect("mongodb://localhost/rifas", { useNewUrlParser: true })
+  .connect(process.env.DB, { useNewUrlParser: true })
   .then(x => {
     console.log(`Connected to Mongo! Database name: "${x.connections[0].name}"`)
   })

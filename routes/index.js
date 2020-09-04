@@ -21,7 +21,6 @@ const {
 /* GET home page */
 router.get("/", catchErrors(getAllRaffles))
 router.get("/profile", (req, res) => {
-  console.log(req.user.tickets[0].raffle)
   res.render("profile", req.user)
 })
 

@@ -1,4 +1,3 @@
-
 <h2>Login</h2>
 
 <form action="/auth/login" method="POST" id="form-container">
@@ -11,7 +10,7 @@
   <input id="password" type="password" name="password" placeholder="Your password">
   <br>
   {{#if message }}
-    <div class="error-message">{{ message }}</div>
+  <div class="error-message">{{ message }}</div>
   {{/if}}
 
   <br><br>
@@ -22,4 +21,6 @@
     Don't have an account yet?
     <a href="/auth/signup">Signup</a>
   </p>
+  <hr>
+  <a class="btn btn-danger" href="/auth/google">Login with <i class="fab fa-google"></i></a>
 </form>

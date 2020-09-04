@@ -22,7 +22,8 @@ exports.generateRaffle = async (req, res) => {
 }
 
 exports.getAllRaffles = async (req, res) => {
-  const raffles = await Raffle.find().populate("product")
+  const result = await Raffle.find().populate("product")
+  const raffles = result.reverse()
   res.render("index", { raffles })
 }
 
